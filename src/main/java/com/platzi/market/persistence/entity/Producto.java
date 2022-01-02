@@ -1,6 +1,7 @@
 package com.platzi.market.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="productos")
@@ -20,6 +21,18 @@ public class Producto {
     @Column(name = "cantidad_stock")
     private Integer cantidadStock;
     private Boolean estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria",insertable = false,updatable = false)
+    private Categoria categoria;
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public Integer getIdProducto() {
         return idProducto;
